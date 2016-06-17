@@ -2,7 +2,7 @@
 FROM ubuntu:latest
 MAINTAINER tuomas.palenius@gmail.com
 
-RUN apt-get update && apt-get install -y git nodejs npm ssh sudo
+RUN apt-get update && apt-get install -y git nodejs npm ssh sudo nano
 
 # process manager:
 RUN npm install -g pm2
@@ -11,13 +11,12 @@ RUN npm install -g pm2
 RUN ln -s /usr/bin/nodejs /usr/bin/node
 
 # install ide
-RUN cd /opt && git clone https://github.com/artiee/zeroace.git
+RUN cd /opt && git clone https://github.com/artiee/zeroace.git && cd zeroace && npm install
 
 # install wetty
 RUN cd /opt/zeroace && git clone https://github.com/krishnasrinivas/wetty && cd wetty && npm install
 
-# install file-browser
-RUN cd /opt/zeroace && git clone https://github.com/sumitchawla/file-browser.git && cd file-browser && npm install
+RUN cd /opt/zeroace && mv lib wetty/public && mv index.html wetty/public
 
 # create the start script:
 RUN echo "service ssh start && pm2 start /opt/zeroace/wetty/app.js -- -p 8087 --sshuser ide
