@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Wetty - The WebTTY Terminal Emulator</title>
+    <link rel="stylesheet" href="/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/app.css">
+    <script src="/wetty/hterm_all.js"></script>
+    <script src="/wetty/socket.io/socket.io.js"></script>
+    <script src="/wetty/wetty.js"></script>
+    <style>
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+        }
+	#fileBrowser {
+	     float: left;
+ 	     width: 25%;
+	     height: 100%;
+	}
+        #terminal {
+            height: 100%;
+	    float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="headerPanel">Header panel comes here, eg. saving options, custom commands etc.</div>
+    <div id="fileBrowser">
+
+      <div class="panel panel-default mainpanel">
+        <div class="panel-heading">
+          File Browser
+          <span class="up">
+              <i class="fa fa-level-up"></i> Up
+          </span> 
+        </div>
+        <div class="panel-body">
+          <table class="linksholder">
+          </table>
+        </div>
+      </div> 
+    </div>
+    
+    <div id="terminal"></div>
+    
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/datatable/js/jquery.datatables.min.js"></script>
+    <script src="lib/app.js"></script>
+</body>
+
+</html>
