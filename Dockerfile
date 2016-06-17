@@ -16,11 +16,11 @@ RUN cd /opt && git clone https://github.com/artiee/zeroace.git && cd zeroace && 
 # install wetty
 RUN cd /opt/zeroace && git clone https://github.com/krishnasrinivas/wetty && cd wetty && npm install
 
+# copy the custom ide inside wettys public (TODO: fix, so this move wouldn't be needed)
 RUN cd /opt/zeroace && mv lib wetty/public && mv index.html wetty/public
 
 # create the start script:
-RUN echo "service ssh start && pm2 start /opt/zeroace/wetty/app.js -- -p 8087 --sshuser ide
- --sshhost localhost --sshport 3022 && pm2 start /opt/zeroace/file-browser/index.js" > /opt/start.sh
+RUN echo "service ssh start && pm2 start /opt/zeroace/wetty/app.js -- -p 8087 --sshuser ide --sshhost localhost --sshport 3022 && pm2 start /opt/zeroace/index.js" > /opt/start.sh
 
 # create user ide with home dir and bash shell
 RUN useradd -d /home/ide -m -s /bin/bash ide
