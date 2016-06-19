@@ -19,6 +19,9 @@ RUN cd /opt/zeroace && git clone https://github.com/krishnasrinivas/wetty && cd 
 # copy the custom ide inside wettys public (TODO: fix, so this move wouldn't be needed)
 RUN cd /opt/zeroace && mv lib wetty/public && mv index.html wetty/public
 
+# get the ace-editor builds
+RUN cd /opt/zeroace && git clone https://github.com/ajaxorg/ace-builds.git && mv /opt/zeroace/ace-builds/src-min-noconflict /opt/zeroace/wetty/public/ace
+
 # create the start script:
 RUN echo "service ssh start && pm2 start /opt/zeroace/wetty/app.js -- -p 8087 --sshuser ide --sshhost localhost --sshport 3022 && pm2 start /opt/zeroace/index.js" > /opt/start.sh
 

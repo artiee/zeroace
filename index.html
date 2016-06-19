@@ -20,10 +20,16 @@
 	#fileBrowser {
 	     float: left;
  	     width: 25%;
-	     height: 100%;
+	     height: 51%;
 	}
+        #editor {
+             float: left;
+             height: 50%;
+             width: 75%;
+        }
         #terminal {
-            height: 100%;
+            height: 50%;
+            width: 100%;
 	    float: left;
         }
     </style>
@@ -31,13 +37,13 @@
 
 <body>
     <div id="headerPanel">Header panel comes here, eg. saving options, custom commands etc.</div>
+    
     <div id="fileBrowser">
-
       <div class="panel panel-default mainpanel">
         <div class="panel-heading">
           File Browser
           <span class="up">
-              <i class="fa fa-level-up"></i> Up
+            <i class="fa fa-level-up"></i> Up
           </span> 
         </div>
         <div class="panel-body">
@@ -47,12 +53,20 @@
       </div> 
     </div>
     
-    <div id="terminal"></div>
+    <div id="editor"></div>
     
+    <div id="terminal"></div>
+
     <script src="lib/jquery.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
     <script src="lib/datatable/js/jquery.datatables.min.js"></script>
     <script src="lib/app.js"></script>
+    <script src="ace/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/ambiance");
+        editor.getSession().setMode("ace/mode/javascript");
+    </script>
 </body>
 
 </html>
